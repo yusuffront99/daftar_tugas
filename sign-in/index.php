@@ -43,12 +43,37 @@
     <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
+    <!-- INSERT DATA  -->
+    <?php 
+      include_once("../database/database.php");
+      $database = new Database;
+      $connection = $database->getConnection();
+
+      if(isset($_POST['btn-signin'])){
+          $email = $_POST['email'];
+          $password = md5($_POST['password']);
+
+          $login = "SELECT * FROM pengguna WHERE email='" . $email ."' AND password = '".$password."'";
+
+          $statement = $connection->prepare($login);
+          $statement->execute();
+          $row_count = $statement->rowCount();
+          
+          if($row_count > 0) {
+            echo "login successfully";
+          }else{
+            echo "login Failed";
+          }
+      }
+    ?>
+    <!-- INSERT END  -->
+
     <div class="form-floating">
-      <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com">
+      <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com" required>
       <label for="email">Email address</label>
     </div>
     <div class="form-floating">
-      <input type="password" name="password" class="form-control" id="pasword" placeholder="Password">
+      <input type="password" name="password" class="form-control" id="pasword" placeholder="Password" required>
       <label for="password">Password</label>
     </div>
 
@@ -57,7 +82,7 @@
         <input type="checkbox" value="remember-me"> Remember me
       </label>
     </div>
-    <a href="../dashboard/index.html" class="w-100 btn-lg btn btn-primary" type="submit">Sign in</a>
+    <button name="btn-signin" class="w-100 btn-lg btn btn-primary" type="submit">Sign in</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
   </form>
 </main>
