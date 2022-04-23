@@ -1,4 +1,3 @@
 <?php 
-
-    header('Location: sign-in/index.html');
+    header('Location: sign-in/index.php');
 ?>

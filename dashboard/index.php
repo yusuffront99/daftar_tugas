@@ -1,3 +1,17 @@
+<!-- Middleware  -->
+<?php 
+  session_start();
+  if(!isset($_SESSION['email'])){
+    echo '<meta http-equiv="refresh" content="0;url=http://localhost/praktikum_web/daftar_tugas/">';
+  }
+
+  if(isset($_POST['btn_logout'])){
+    session_destroy();
+    echo '<meta http-equiv="refresh" content="0;url=http://localhost/praktikum_web/daftar_tugas/">';
+  }
+?>
+<!-- Middleware  -->
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -45,7 +59,9 @@
   <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
   <div class="navbar-nav">
     <div class="nav-item text-nowrap">
-      <a class="nav-link px-3" href="#">Sign out</a>
+      <form action="" method="post">
+        <button type="submit" name="btn_logout" class="btn btn-danger nav-link px-3">Logout</button>
+      </form>
     </div>
   </div>
 </header>

@@ -45,6 +45,13 @@
 
     <!-- INSERT DATA  -->
     <?php 
+      // SESSION LOGIN
+      session_start();
+      if(isset($_SESSION['email'])){
+        header('Location: ../dashboard/index.php');
+      };
+      // SESSION END LOGIN
+      
       include_once("../database/database.php");
       $database = new Database;
       $connection = $database->getConnection();
@@ -60,6 +67,9 @@
           $row_count = $statement->rowCount();
           
           if($row_count > 0) {
+            session_start();
+            $_SESSION['email'] = $_POST['email'];
+            header('Location: ../dashboard/index.php');
             echo '<div class="alert alert-success" role="alert">login successfully</div>';
           }else{
             echo '<div class="alert alert-danger" role="alert">login Failed</div>';
