@@ -60,14 +60,15 @@
           $row_count = $statement->rowCount();
           
           if($row_count > 0) {
-            echo "login successfully";
+            echo '<div class="alert alert-success" role="alert">login successfully</div>';
           }else{
-            echo "login Failed";
+            echo '<div class="alert alert-danger" role="alert">login Failed</div>';
           }
       }
     ?>
     <!-- INSERT END  -->
 
+    
     <div class="form-floating">
       <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com" required>
       <label for="email">Email address</label>
