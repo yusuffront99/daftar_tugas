@@ -48,7 +48,7 @@
       // SESSION LOGIN
       session_start();
       if(isset($_SESSION['email'])){
-        header('Location: ../dashboard/index.php');
+        header('Location: ..pages/main.php');
       };
       // SESSION END LOGIN
       
@@ -69,7 +69,7 @@
           if($row_count > 0) {
             session_start();
             $_SESSION['email'] = $_POST['email'];
-            header('Location: ../dashboard/index.php');
+            header('Location: ../pages/main.php');
             echo '<div class="alert alert-success" role="alert">login successfully</div>';
           }else{
             echo '<div class="alert alert-danger" role="alert">login Failed</div>';
