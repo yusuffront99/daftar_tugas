@@ -9,19 +9,19 @@
         </li>
         <li class="nav-item">
         <a class="nav-link <?php echo $_GET['page'] == 'dosen' ? 'active' : '' ?>" href="?page=dosen">
-            <span data-feather="file"></span>
+            <span data-feather="user"></span>
             Dosen
         </a>
         </li>
         <li class="nav-item">
         <a class="nav-link <?php echo $_GET['page'] == 'matakuliah' ? 'active' : '' ?>" href="?page=matakuliah">
-            <span data-feather="shopping-cart"></span>
+            <span data-feather="book"></span>
             Matakuliah
         </a>
         </li>
         <li class="nav-item">
         <a class="nav-link <?php echo $_GET['page'] == 'tugas' ? 'active' : '' ?>" href="?page=tugas">
-            <span data-feather="users"></span>
+            <span data-feather="clipboard"></span>
             Tugas
         </a>
         </li>
