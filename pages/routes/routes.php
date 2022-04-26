@@ -54,6 +54,9 @@
                 case 'matakuliah';
                     include "matakuliah/matakuliah.php";
                     break;
+                case 'tugas';
+                    include "tugas/tugas.php";
+                    break;
                 default:
                     include "dashboard.php";
             }

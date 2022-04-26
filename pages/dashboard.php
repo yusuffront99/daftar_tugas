@@ -1,1 +1,1 @@
-<h1>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt, molestiae?</h1>
+<h1>Dashboard</h1>
