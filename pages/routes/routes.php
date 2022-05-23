@@ -13,6 +13,11 @@
                 case 'dosen_create';
                     file_exists("dosen/dosen_create.php") ?  include "dosen/dosen_create.php" : include "404.php";
                     break;
+                case 'dosen_update';
+                    file_exists("dosen/dosen_update.php") ?  include "dosen/dosen_update.php" : include "404.php";
+                    break;
+
+
                 case 'matakuliah';
                     file_exists("matakuliah/index.php") ?  include "matakuliah/index.php" : include "404.php";
                     break;

@@ -8,7 +8,7 @@
         </a>
         </li>
         <li class="nav-item">
-        <a class="nav-link <?php echo $_GET['page'] == 'dosen' ? 'active' : '' ?>" href="?page=dosen">
+        <a class="nav-link <?php echo $_GET['page'] == 'dosen' || 'dosen_create' ? 'active' : '' ?>" href="?page=dosen">
             <span data-feather="user"></span>
             Dosen
         </a>

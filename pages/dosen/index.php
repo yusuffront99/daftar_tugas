@@ -45,7 +45,7 @@
                     <td><?php echo $data['handphone'] ?></td>
                     <td><?php echo $data['email'] ?></td>
                     <td>
-                        <a href="" class="badge bg-warning"><span data-feather="edit"></span></a>
+                        <a href="?page=dosen_update&id=<?php echo $data['id']?>" class="badge bg-warning"><span data-feather="edit"></span></a>
                         <a href="" class="badge bg-danger"><span data-feather="trash"></span></a>
                     </td>
                 </tr>
