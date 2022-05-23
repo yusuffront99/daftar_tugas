@@ -16,9 +16,6 @@
         $statement->bindParam(3, $email);
         $statement->execute();
 ?>
-    <div class="alert alert-success" role="alert">
-        Data Berhasil Ditambahkan
-    </div>
 
 <?php
     $_SESSION['message'] = "Berhasil simpan data";

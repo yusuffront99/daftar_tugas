@@ -26,12 +26,9 @@
         $statement->bindParam(4, $id);
         $statement->execute();
 ?>
-    <div class="alert alert-success" role="alert">
-        Data Berhasil Ditambahkan
-    </div>
 
 <?php
-    $_SESSION['message'] = "Berhasil simpan data";
+    $_SESSION['message'] = "Data Berhasil Diperbaharui";
     header('Location: main.php?page=dosen');
     }
 ?>
