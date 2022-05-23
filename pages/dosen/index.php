@@ -3,7 +3,17 @@
     </div>
 
     <div class="table-responsive">
-        <a href="" class="btn btn-success btn-sm mb-3"><span data-feather="plus"></span> New Data</a>
+        <?php 
+            if($_SESSION['message'] != "kosong"){
+        ?>
+            <div class="alert alert-success" role="alert">
+                <?php echo $_SESSION['message'] ?>
+            </div>
+        <?php
+        $_SESSION['message'] = "kosong";
+            }
+        ?>
+        <a href="?page=dosen_create" class="btn btn-success btn-sm mb-3"><span data-feather="plus"></span> Tambah Data</a>
     <table class="table table-striped table-sm">
         <thead>
             <tr>
