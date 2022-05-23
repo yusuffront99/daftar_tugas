@@ -5,21 +5,24 @@
             
             switch($page) {
                 case '';
-                    include "dashboard.php";
+                    file_exists("dashboard.php") ? include "dashboard.php" : include "404.php";
                     break;
                 case 'dosen';
-                    include "dosen/dosen.php";
+                    file_exists("dosen/index.php") ?  include "dosen/index.php" : include "404.php";
                     break;
+                // case 'dosen';
+                //     file_exists("dosen/dosen.php") ?  include "dosen/dosen.php" : include "404.php";
+                //     break;
                 case 'matakuliah';
-                    include "matakuliah/matakuliah.php";
+                    file_exists("matakuliah/index.php") ?  include "matakuliah/index.php" : include "404.php";
                     break;
                 case 'tugas';
-                    include "tugas/tugas.php";
+                    file_exists("tugas/index.php") ?  include "tugas/index.php" : include "404.php";
                     break;
                 default:
                     include "dashboard.php";
             }
         } else {
-            include "dashboard.php";
+            // include "dashboard.php";
         }
     ?>
