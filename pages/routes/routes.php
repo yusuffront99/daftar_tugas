@@ -21,6 +21,14 @@
                 case 'matakuliah';
                     file_exists("matakuliah/index.php") ?  include "matakuliah/index.php" : include "404.php";
                     break;
+                    case 'matakuliah_create';
+                    file_exists("matakuliah/matakuliah_create.php") ?  include "matakuliah/matakuliah_create.php" : include "404.php";
+                    break;
+                case 'matakuliah_update';
+                    file_exists("matakuliah/matakuliah_update.php") ?  include "matakuliah/matakuliah_update.php" : include "404.php";
+                    break;
+
+
                 case 'tugas';
                     file_exists("tugas/index.php") ?  include "tugas/index.php" : include "404.php";
                     break;

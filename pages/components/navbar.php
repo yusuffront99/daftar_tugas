@@ -2,13 +2,13 @@
     <div class="position-sticky pt-3">
     <ul class="nav flex-column">
         <li class="nav-item">
-        <a class="nav-link <?php echo $_GET['page'] == 'dashboard' ? 'active' : '' ?>" aria-current="page" href="?page=">
+        <a class="nav-link <?php echo $_GET['page'] == '' ? 'active' : '' ?>" aria-current="page" href="?page=">
             <span data-feather="home"></span>
             Dashboard
         </a>
         </li>
         <li class="nav-item">
-        <a class="nav-link <?php echo $_GET['page'] == 'dosen' || 'dosen_create' ? 'active' : '' ?>" href="?page=dosen">
+        <a class="nav-link <?php echo $_GET['page'] == 'dosen' || $_GET['page'] == 'dosen_create' ? 'active' : '' ?>" href="?page=dosen">
             <span data-feather="user"></span>
             Dosen
         </a>

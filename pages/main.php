@@ -24,8 +24,6 @@ echo '<meta http-equiv="refresh" content="0;url=http://localhost/praktikum_web/d
 
 <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
 
-
-
 <!-- Bootstrap core CSS -->
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
