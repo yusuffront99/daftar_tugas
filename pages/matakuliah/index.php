@@ -22,31 +22,45 @@
                 <th>No</th>
                 <th>Dosen Pengampu</th>
                 <th>MataKuliah</th>
-                <th>Kelas</th>
+                <th>Hari</th>
+                <th>Jam</th>
                 <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>61</td>
-            </tr>
-            <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>61</td>
-            </tr>
-            <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-            </tr>
+            <!-- FETCH DATABASE DOSEN -->
+            <?php 
+                include_once('../database/database.php');
+                $database = new Database;
+                $connection = $database->getConnection();
+
+                $selectSQL = "SELECT dosen.nama_dosen, matakuliah.nama_matakuliah, matakuliah.hari, matakuliah.jam
+                FROM dosen 
+                LEFT JOIN matakuliah 
+                ON dosen.id = matakuliah.dosen_id";
+
+                $statement = $connection->prepare($selectSQL);
+                $statement->execute();
+                $data = $statement->fetch();
+
+                $no = 1;
+                while($data = $statement->fetch(PDO::FETCH_ASSOC)){
+            ?>
+                <!-- END CODE -->
+                <tr>
+                    <td><?php echo $no++; ?></td>
+                    <td><?php echo $data['nama_dosen'] ?></td>
+                    <td><?php echo $data['nama_matakuliah'] ?></td>
+                    <td><?php echo $data['hari'] ?></td>
+                    <td><?php echo $data['jam'] ?></td>
+                    <td>
+                        <a href="" class="badge bg-warning"><span data-feather="edit"></span></a>
+                        <a href="" class="badge bg-danger"><span data-feather="trash"></span></a>
+                    </td>
+                </tr>
+                <?php
+                };
+                ?>
+        </tbody>
         </table>
 </div>
