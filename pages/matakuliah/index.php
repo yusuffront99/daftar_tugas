@@ -34,11 +34,10 @@
                 $database = new Database;
                 $connection = $database->getConnection();
 
-                $selectSQL = "SELECT matakuliah.nama_matakuliah, matakuliah.hari, matakuliah.jam, matakuliah.id, dosen.nama_dosen  FROM matakuliah RIGHT JOIN dosen ON matakuliah.dosen_id = dosen.id";
+                $selectSQL = "SELECT matakuliah.nama_matakuliah, matakuliah.hari, matakuliah.jam, matakuliah.id, dosen.nama_dosen  FROM matakuliah LEFT JOIN dosen ON matakuliah.dosen_id = dosen.id";
 
                 $statement = $connection->prepare($selectSQL);
                 $statement->execute();
-                $data = $statement->fetch();
 
                 $no = 1;
                 while($data = $statement->fetch(PDO::FETCH_ASSOC)){
