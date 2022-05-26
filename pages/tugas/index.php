@@ -20,14 +20,46 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>Dosen Pengampu</th>
-                <th>MataKuliah</th>
-                <th>Hari</th>
-                <th>Jam</th>
+                <th>Nama Tugas</th>
+                <th>Nama Matakuliah</th>
+                <th>Keterangan</th>
+                <th>Deadline</th>
                 <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
+            <!-- FETCH DATABASE DOSEN -->
+            <?php 
+                include_once('../database/database.php');
+                $database = new Database;
+                $connection = $database->getConnection();
+
+                $selectSQL = "SELECT tugas.nama_tugas,  tugas.keterangan, tugas.deadline_date, tugas.deadline_time, tugas.id, matakuliah.nama_matakuliah  FROM tugas LEFT JOIN matakuliah ON tugas.matakuliah_id = matakuliah.id";
+
+                $statement = $connection->prepare($selectSQL);
+                $statement->execute();
+
+                $no = 1;
+                while($data = $statement->fetch(PDO::FETCH_ASSOC)){
+                
+            ?>
+            <!-- END CODE -->
+            <tr>
+                <td><?php echo $no++;?></td>
+                <td><?php echo $data['nama_tugas']?></td>
+                <td><?php echo $data['nama_matakuliah']?></td>
+                <td><?php echo $data['keterangan']?></td>
+                <td><?php echo $data['deadline_date']?></td>
+                <td><?php echo $data['deadline_time']?></td>
+                <td>
+                    <a href="?page=tugas_update&id=<?php echo $data['id']?>" class="badge bg-warning"><span data-feather="edit"></span></a>
+                    <a href="" class="badge bg-danger"><span data-feather="trash"></span></a>
+                </td>
+            </tr>
+
+            <?php 
+                }
+            ?>
         </tbody>
         </table>
 </div>
