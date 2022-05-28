@@ -47,7 +47,19 @@
     $statement->bindParam(1, $id);
     $statement->execute();
     $data = $statement->fetch();
-    print_r($data);
+    
+?>
+
+<?php 
+    include_once("../database/database.php");
+    $database = new Database;
+    $connection = $database->getConnection();
+
+    $findSQL = "SELECT id, nama_dosen FROM dosen";
+    $statement = $connection->prepare($findSQL);
+    $statement->execute();
+    $items = $statement->fetchAll();
+    
 ?>
 
 <!-- ACTION ADD DATA -->
@@ -59,8 +71,14 @@
             <form action="" method="post">
                 <input type="text" value="<?php $data['id']?>" hidden>
                 <div class="mb-3">
-                    <select name="dosen_id" id="" class="form-select" hidden>
-                        <option value="<?php echo $data['dosen_id']?>"><?php echo $data['dosen_id']?></option>
+                    <select name="dosen_id" id="" class="form-select">
+                        <?php foreach($items as $item) {?>
+                            <option value="<?php echo $item['id']?>"
+                            <?php if($item['id'] == $data['dosen_id']){
+                                echo "selected";
+                            }
+                            ?>><?php echo $item['nama_dosen']?></option>
+                        <?php } ?>
                     </select>
 
                 </div>
