@@ -43,15 +43,15 @@
                 while($data = $statement->fetch(PDO::FETCH_ASSOC)){
                 
             ?>
-                <!-- END CODE -->
+            <!-- END CODE -->
                 <tr>
                     <td><?php echo $no++; ?></td>
                     <td><?php echo $data['nama_dosen'] ?></td>
                     <td><?php echo $data['nama_matakuliah'] ?></td>
-                    <td><?php echo $data['hari'] ?></td>
+                    <td><div class="badge bg-primary"><?php echo $data['hari']?></div></td>
                     <td><?php echo $data['jam'] ?></td>
                     <td>
-                    <a href="?page=matakuliah_update&id=<?php echo $data['id']?>" class="badge bg-warning"><span data-feather="edit"></span></a>
+                        <a href="?page=matakuliah_update&id=<?php echo $data['id']?>" class="badge bg-warning"><span data-feather="edit"></span></a>
                         <a href="" class="badge bg-danger"><span data-feather="trash"></span></a>
                     </td>
                 </tr>

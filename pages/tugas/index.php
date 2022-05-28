@@ -49,8 +49,7 @@
                 <td><?php echo $data['nama_tugas']?></td>
                 <td><?php echo $data['nama_matakuliah']?></td>
                 <td><?php echo $data['keterangan']?></td>
-                <td><?php echo $data['deadline_date']?></td>
-                <td><?php echo $data['deadline_time']?></td>
+                <td><?php echo $data['deadline_date']?> <div class="badge bg-danger"><?php echo $data['deadline_time']?></div></td>
                 <td>
                     <a href="?page=tugas_update&id=<?php echo $data['id']?>" class="badge bg-warning"><span data-feather="edit"></span></a>
                     <a href="" class="badge bg-danger"><span data-feather="trash"></span></a>
