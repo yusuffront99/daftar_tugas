@@ -27,6 +27,10 @@
         $statement->execute();
 ?>
 
+<div class="alert alert-success" role="alert">
+    Data Berhasil Diperbaharui
+</div>
+
 <?php
     $_SESSION['message'] = "Data Berhasil Diperbaharui";
     header('Location: main.php?page=dosen');
