@@ -66,8 +66,8 @@ include_once("../database/database.php");
     $statement = $connection->prepare($findSQL);
     // $statement->bindParam(1, $id);
     $statement->execute();
-    $items = $statement->fetchAll();
-    print_r($items);
+    $item = $statement->fetch();
+    print_r($item);
     
 ?>
 
@@ -85,13 +85,7 @@ include_once("../database/database.php");
                 </div>
                 <div class="mb-3">
                     <select name="matakuliah_id" id="" class="form-select">
-                        <?php foreach($items as $item) {?>
-                            <option value="<?php echo $item['id']?>" 
-                            <?php if($item['id'] == $data['matakuliah_id']){
-                                echo "selected";
-                            } 
-                            ?>><?php echo $item['nama_matakuliah']?></option>
-                        <?php } ?>
+                        <option value="<?php echo $data['matakuliah_id']?>"><?php echo $item['nama_matakuliah']?></option>
                     </select>
                 </div>
                 <div class="mb-3">
