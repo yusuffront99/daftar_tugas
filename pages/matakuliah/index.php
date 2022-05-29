@@ -54,7 +54,7 @@
                     </td>
                     <td>
                         <a href="?page=matakuliah_update&id=<?php echo $data['id']?>" class="badge bg-warning"><span data-feather="edit"></span></a>
-                        <a href="" class="badge bg-danger"><span data-feather="trash"></span></a>
+                        <a href="?page=matakuliah_delete&id=<?php echo $data['id']?>" class="badge bg-danger"><span data-feather="trash"></span></a>
                     </td>
                 </tr>
                 <?php
