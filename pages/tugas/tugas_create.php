@@ -33,11 +33,10 @@
     $database = new Database;
     $connection = $database->getConnection();
 
-    $sql = "SELECT id, nama_matakuliah FROM matakuliah";
+    $sql = "SELECT matakuliah.nama_matakuliah, matakuliah.id, dosen.nama_dosen  FROM matakuliah LEFT JOIN dosen ON matakuliah.dosen_id = dosen.id";
     $statement = $connection->prepare($sql);
     $statement->execute();
-    $statement->setFetchMode(PDO::FETCH_ASSOC);
-    
+    $data = $statement->fetchAll();
 ?>
 
 <!-- ACTION ADD DATA -->
@@ -54,11 +53,9 @@
                 <div class="mb-3">
                     <label for="matakuliah_id" class="form-label">MataKuliah</label>
                     <select name="matakuliah_id" class="form-select">
-                        <?php 
-                            while($data = $statement->fetch()){
-                                echo '<option value='.$data['id'].'>'.$data['nama_matakuliah'].'</option>';
-                            }
-                        ?>
+                        <?php foreach($data as $dt) { ?>
+                            <option value="<?php echo $dt['id']?>"><?php echo $dt['nama_matakuliah']?><span style='font-size:100px;'>&#9193; <?php echo $dt['nama_dosen']?></span></option>
+                        <?php } ?>
                     </select>
                 </div>
                 <div class="mb-3">

@@ -60,13 +60,12 @@
                 <div class="mb-3">
                     <label for="nama_matakuliah" class="form-label">MataKuliah</label>
                     <select name="nama_matakuliah" class="form-select">
-                        <?php 
-                            $courses = ['Algoritma','Java','Basis Data', 'Riset Operasi', 'Pemograman Web', 'Jaringan Komputer'];
-                        ?>
-                        <option value="" selected disabled>-- Pilih Matakuliah --</option>
-                        <?php foreach($courses as $course) { ?>
-                            <option value="<?php echo $course?>"><?php echo $course?></option>
-                        <?php } ?>
+                        <option value="Algoritma">Algoritma</option>
+                        <option value="Riset Operasi">Riset Operasi</option>
+                        <option value="Basis Data">Basis Data</option>
+                        <option value="Java">Java</option>
+                        <option value="Pemograman Web">Pemograman Web</option>
+                        <option value="Keamanan Jaringan">Keamana Jaringan</option>
                     </select>
                 </div>
                 <div class="mb-3">

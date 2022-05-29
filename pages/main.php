@@ -26,6 +26,7 @@ echo '<meta http-equiv="refresh" content="0;url=http://localhost/praktikum_web/d
 
 <!-- Bootstrap core CSS -->
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
 
 <style>
     .bd-placeholder-img {
