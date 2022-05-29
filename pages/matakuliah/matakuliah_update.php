@@ -14,18 +14,20 @@
 
     if(isset($_POST['btn-simpan'])){
         $dosen_id = $_POST['dosen_id'];
-        $nama_matakuliah = $_POST['nama_matakuliah'];
+        $matakuliah = $_POST['nama_matakuliah'];
         $hari = $_POST['hari'];
-        $jam = $_POST['jam'];
+        $jam_awal = $_POST['jam_awal'];
+        $jam_akhir = $_POST['jam_akhir'];
 
-        $updateSQL = "UPDATE `matakuliah` SET `dosen_id` = ?, `nama_matakuliah` = ?, `hari` = ?, `jam` = ? WHERE `matakuliah`.`id` = ?";
+        $updateSQL = "UPDATE `matakuliah` SET `dosen_id` = ?, `nama_matakuliah` = ?, `hari` = ?, `jam_awal` = ?, `jam_akhir` = ? WHERE `matakuliah`.`id` = ?";
 
         $statement = $connection->prepare($updateSQL);
         $statement->bindParam(1, $dosen_id);
-        $statement->bindParam(2, $nama_matakuliah);
+        $statement->bindParam(2, $matakuliah);
         $statement->bindParam(3, $hari);
-        $statement->bindParam(4, $jam);
-        $statement->bindParam(5, $id);
+        $statement->bindParam(4, $jam_awal);
+        $statement->bindParam(5, $jam_akhir);
+        $statement->bindParam(6, $id);
         $statement->execute();
 ?>
 
@@ -84,14 +86,14 @@
                 </div>
                 <div class="mb-3">
                     <label for="nama_matakuliah" class="form-label">MataKuliah</label>
-                    <select name="nama_matakuliah" class="form-select">
-                        <option value="">-- Pilih Matakuliah --</option>
-                        <option value="Algoritma" <?php if($data['nama_matakuliah'] == "Algoritma") { echo 'selected';}?>>Algoritma</option>
-                        <option value="Java" <?php if($data['nama_matakuliah'] == "Java") { echo 'selected';}?>>Java</option>
-                        <option value="Basis Data" <?php if($data['nama_matakuliah'] == "Basis Data") { echo 'selected';}?>>Basis Data</option>
-                        <option value="Riset Operasi" <?php if($data['nama_matakuliah'] == "Riset Operasi") { echo 'selected';}?>>Riset Operasi</option>
-                        <option value="Pemograman Web" <?php if($data['nama_matakuliah'] == "Pemograman Web") { echo 'selected';}?>>Pemograman Web</option>
-                        <option value="Keamanan Jaringan" <?php if($data['nama_matakuliah'] == "Keamanan Jaringan") { echo 'selected';}?>>Keamanan Jaringan</option>
+                    <select name="nama_matakuliah" class="form-select" required>
+                        <?php 
+                            $lists = ['Algoritma','Java','Basis Data', 'Riset Operasi', 'Pemograman Web', 'Jaringan Komputer'];
+                        ?>
+                        <option value="" selected disabled>-- Pilih Matakuliah --</option>
+                        <?php foreach($lists as $list) { ?>
+                            <option value="<?php echo $list?>" <?php echo $data['nama_matakuliah'] == $list ? "selected" : ""?>><?php echo $list?></option>
+                        <?php } ?>
                     </select>
                 </div>
                 <div class="mb-3">
@@ -106,8 +108,16 @@
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="jam" class="form-label">Jam</label>
-                    <input type="time" name="jam" class="form-control" id="" value="<?php echo $data['jam']?>" placeholder="masukkan jam...">
+                    <div class="row mb-3">
+                        <div class="col-sm-6">
+                            <label for="jam_awal">Jam Awal</label>
+                            <input type="time" name="jam_awal" value="<?php echo $data['jam_awal']?>" class="form-control" required>
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="jam_akhir">Jam Akhir</label>
+                            <input type="time" name="jam_akhir" value="<?php echo $data['jam_akhir']?>" class="form-control" required>
+                        </div>
+                    </div>
                 </div>
                 <div class="d-grid gap-2 mb-3">
                     <button class="btn btn-primary" name="btn-simpan" type="submit">Simpan</button>

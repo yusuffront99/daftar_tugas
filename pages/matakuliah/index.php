@@ -28,13 +28,13 @@
             </tr>
         </thead>
         <tbody>
-            <!-- FETCH DATABASE DOSEN -->
+            <!-- FETCH DATABASE DOSEN WITH MATAKULIAH -->
             <?php 
                 include_once('../database/database.php');
                 $database = new Database;
                 $connection = $database->getConnection();
 
-                $selectSQL = "SELECT matakuliah.nama_matakuliah, matakuliah.hari, matakuliah.jam, matakuliah.id, dosen.nama_dosen  FROM matakuliah LEFT JOIN dosen ON matakuliah.dosen_id = dosen.id";
+                $selectSQL = "SELECT matakuliah.nama_matakuliah, matakuliah.hari, matakuliah.jam_awal, matakuliah.jam_akhir, matakuliah.id, dosen.nama_dosen  FROM matakuliah LEFT JOIN dosen ON matakuliah.dosen_id = dosen.id";
 
                 $statement = $connection->prepare($selectSQL);
                 $statement->execute();
@@ -49,7 +49,9 @@
                     <td><?php echo $data['nama_dosen'] ?></td>
                     <td><?php echo $data['nama_matakuliah'] ?></td>
                     <td><div class="badge bg-primary"><?php echo $data['hari']?></div></td>
-                    <td><?php echo $data['jam'] ?></td>
+                    <td>
+                        <div class="badge bg-success"><?php echo $data['jam_awal']?> - <?php echo $data['jam_akhir']?></div>
+                    </td>
                     <td>
                         <a href="?page=matakuliah_update&id=<?php echo $data['id']?>" class="badge bg-warning"><span data-feather="edit"></span></a>
                         <a href="" class="badge bg-danger"><span data-feather="trash"></span></a>
